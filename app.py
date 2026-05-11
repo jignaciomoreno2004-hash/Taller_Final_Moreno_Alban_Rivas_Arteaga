@@ -127,9 +127,9 @@ else:
         # Gráfico 1: Vinos por Educación
         g1_data = df.groupby("Education")["MntWines"].mean().reindex(selected_edu).dropna().reset_index()
         
+        st.markdown("#### A mayor nivel educativo, el gasto en vinos se multiplica")
         fig1 = px.bar(
             g1_data, x="MntWines", y="Education", orientation="h",
-            title="A mayor nivel educativo, el gasto en vinos se multiplica",
             color="MntWines", color_continuous_scale=[PALETTE["gris_claro"], PALETTE["vino"]],
             template="plotly_white", text_auto=".0f"
         )
@@ -148,12 +148,12 @@ else:
         # Gráfico 2: Vinos y Gold por Estado Civil
         g2_data = df.groupby("Marital_Status")[["MntWines", "MntGoldProds"]].mean().reindex(selected_marital).dropna().sort_values("MntWines", ascending=False).reset_index()
         
+        st.markdown("#### Clientes sin pareja estable lideran el gasto premium")
         fig2 = go.Figure()
         fig2.add_trace(go.Bar(x=g2_data["Marital_Status"], y=g2_data["MntWines"], name="Vinos", marker_color=PALETTE["vino"]))
         fig2.add_trace(go.Bar(x=g2_data["Marital_Status"], y=g2_data["MntGoldProds"], name="Gold", marker_color=PALETTE["dorado"]))
         
         fig2.update_layout(
-            title="Clientes sin pareja lideran el gasto en productos premium",
             barmode="group", template="plotly_white",
             plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
             font=dict(color="#000000"), title_font=dict(color="#000000"),
@@ -174,6 +174,7 @@ else:
         # Gráfico 3: Vinos por TotalKids
         g3_data = df.groupby("TotalKids")["MntWines"].mean().reset_index()
         
+        st.markdown("#### Cada hijo adicional reduce el gasto en vinos")
         fig3 = go.Figure()
         fig3.add_trace(go.Scatter(
             x=g3_data["TotalKids"], y=g3_data["MntWines"], mode="lines+markers+text",
@@ -182,7 +183,6 @@ else:
             text=[f"${v:.0f}" for v in g3_data["MntWines"]], textposition="top center", name="Vinos"
         ))
         fig3.update_layout(
-            title="Cada hijo adicional reduce el gasto en vinos",
             template="plotly_white", plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
             font=dict(color="#000000"), title_font=dict(color="#000000"),
             xaxis=dict(tickvals=[0,1,2,3], title="Hijos", title_font=dict(color="#000000"), tickfont=dict(color="#000000")),
@@ -197,10 +197,10 @@ else:
         df_scatter = df[df["Income"] < p99].copy()
         df_scatter["Comp. Familiar"] = df_scatter["TotalKids"].apply(lambda x: "Sin hijos" if x == 0 else ("1 hijo" if x == 1 else "2+ hijos"))
         
+        st.markdown("#### Ingreso alto + sin hijos = cliente ideal")
         fig4 = px.scatter(
             df_scatter, x="Income", y="TotalSpend", color="Comp. Familiar",
             color_discrete_map={"Sin hijos": PALETTE["vino"], "1 hijo": PALETTE["dorado"], "2+ hijos": PALETTE["coral"]},
-            title="Ingreso alto + sin hijos = cliente ideal",
             labels={"Income": "Ingreso", "TotalSpend": "Gasto"}, template="plotly_white", opacity=0.6
         )
         fig4.update_layout(
@@ -226,9 +226,9 @@ else:
         g5_melted = g5_data.melt(id_vars="TieneHijos", var_name="Canal", value_name="Promedio")
         g5_melted["Canal"] = g5_melted["Canal"].map({"NumWebPurchases": "Web", "NumStorePurchases": "Tienda", "NumCatalogPurchases": "Catálogo", "NumDealsPurchases": "Ofertas"})
         
+        st.markdown("#### El catálogo es clave para el cliente sin hijos")
         fig5 = px.bar(
             g5_melted, x="Canal", y="Promedio", color="TieneHijos", barmode="group",
-            title="El catálogo es clave para el cliente sin hijos",
             color_discrete_map={"Sin hijos": PALETTE["vino"], "Con hijos": PALETTE["gris_claro"]},
             template="plotly_white", text_auto=".1f"
         )
@@ -251,9 +251,9 @@ else:
         
         avg_total_resp = df["Response"].mean() * 100
         
+        st.markdown("#### Segmentos propensos a aceptar campañas")
         fig6 = px.bar(
             g6_data, x="Education", y="Response %", color="TieneHijos", barmode="group",
-            title="Segmentos propenso a aceptar campañas",
             color_discrete_map={"Sin hijos": PALETTE["verde"], "Con hijos": PALETTE["gris_claro"]},
             template="plotly_white", text_auto=".1f"
         )
