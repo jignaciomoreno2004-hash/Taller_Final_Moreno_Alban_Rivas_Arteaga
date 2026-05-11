@@ -9,7 +9,7 @@ import numpy as np
 st.set_page_config(
     layout="wide", 
     page_title="Marketing Intelligence Dashboard", 
-    page_icon="📊"
+    page_icon="chart_with_upwards_trend"
 )
 
 # ─── Paleta corporativa ───────────────────────────────────────────────────────
@@ -94,7 +94,7 @@ mask = (
 df = df_raw[mask].copy()
 
 # ─── Header Principal ─────────────────────────────────────────────────────────
-st.title("📊 Marketing Intelligence Dashboard")
+st.title("Marketing Intelligence Dashboard")
 st.markdown("### Inteligencia de Marketing y Segmentación de Clientes")
 st.markdown("---")
 
@@ -116,7 +116,7 @@ with col_kpi4:
 st.markdown("<br>", unsafe_allow_html=True)
 
 # ─── Acto 1 — ¿Quién es el cliente de alto valor? ─────────────────────────────
-st.header("🏢 Acto 1 — Perfil Demográfico del Valor")
+st.header("Acto 1 — Perfil Demográfico del Valor")
 st.markdown("""
 En este primer acto exploramos cómo el nivel educativo y el estado civil definen el potencial de consumo. 
 Buscamos identificar los clusters demográficos que lideran el gasto en las categorías más rentables.
@@ -142,6 +142,7 @@ with col1:
     )
     fig1.update_layout(
         plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
+        font=dict(color=PALETTE["gris_oscuro"]),
         coloraxis_showscale=False, xaxis_title="Gasto Promedio en Vinos ($)", yaxis_title=None
     )
     st.plotly_chart(fig1, use_container_width=True)
@@ -165,6 +166,7 @@ with col2:
         title="Clientes sin pareja lideran el gasto en productos premium",
         barmode="group", template="plotly_white",
         plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
+        font=dict(color=PALETTE["gris_oscuro"]),
         xaxis_title=None, yaxis_title="Gasto Promedio ($)",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
     )
@@ -173,7 +175,7 @@ with col2:
 
 # ─── Acto 2 — ¿La familia frena el consumo premium? ───────────────────────────
 st.markdown("---")
-st.header("👨‍👩‍👧‍👦 Acto 2 — Impacto de la Composición Familiar")
+st.header("Acto 2 — Impacto de la Composición Familiar")
 st.markdown("""
 El análisis familiar revela una tensión directa entre la presencia de dependientes y el gasto en productos de placer. 
 Cruzamos la demografía con el ingreso para entender si el freno es económico o de priorización.
@@ -201,6 +203,7 @@ with col3:
         title="Cada hijo adicional reduce el gasto en vinos hasta en un 71%",
         template="plotly_white",
         plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
+        font=dict(color=PALETTE["gris_oscuro"]),
         xaxis=dict(tickvals=[0,1,2,3], title="Número total de hijos"),
         yaxis_title="Promedio Gasto Vinos ($)"
     )
@@ -226,7 +229,6 @@ with col4:
             "1 hijo":    PALETTE["dorado"],
             "2+ hijos":  PALETTE["coral"]
         },
-        trendline="ols",
         title="Ingreso alto + sin hijos = el cliente de alto valor ideal",
         labels={"Income": "Ingreso Anual", "TotalSpend": "Gasto Total"},
         template="plotly_white",
@@ -235,6 +237,7 @@ with col4:
     
     fig4.update_layout(
         plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
+        font=dict(color=PALETTE["gris_oscuro"]),
         xaxis_tickformat="$"
     )
     st.plotly_chart(fig4, use_container_width=True)
@@ -242,7 +245,7 @@ with col4:
 
 # ─── Acto 3 — ¿Por dónde llegamos al cliente ideal? ───────────────────────────
 st.markdown("---")
-st.header("📡 Acto 3 — Estrategia de Canal y Campañas")
+st.header("Acto 3 — Estrategia de Canal y Campañas")
 st.markdown("""
 Finalmente, analizamos los puntos de contacto. ¿Dónde compra nuestro cliente ideal y qué tan propenso es 
 a aceptar nuestras ofertas? Estos hallazgos definen la asignación táctica del presupuesto.
@@ -273,7 +276,11 @@ with col5:
         template="plotly_white",
         text_auto=".1f"
     )
-    fig5.update_layout(plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"], yaxis_title="Compras Promedio")
+    fig5.update_layout(
+        plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
+        font=dict(color=PALETTE["gris_oscuro"]),
+        yaxis_title="Compras Promedio"
+    )
     st.plotly_chart(fig5, use_container_width=True)
     st.info("**Insight:** El canal Catálogo es ignorado por familias, pero es 2.7x más efectivo para clientes sin hijos.")
 
@@ -304,13 +311,17 @@ with col6:
         annotation_text=f"Promedio: {avg_total_resp:.1f}%", annotation_position="top right"
     )
     
-    fig6.update_layout(plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"], yaxis_title="Tasa de Respuesta (%)")
+    fig6.update_layout(
+        plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
+        font=dict(color=PALETTE["gris_oscuro"]),
+        yaxis_title="Tasa de Respuesta (%)"
+    )
     st.plotly_chart(fig6, use_container_width=True)
     st.info("**Insight:** El segmento PhD sin hijos es el 'Early Adopter' por excelencia, con tasas de respuesta que duplican la media.")
 
 # ─── Conclusión Final ─────────────────────────────────────────────────────────
 st.markdown("---")
-st.header("🎯 Resumen Estratégico y Recomendaciones")
+st.header("Resumen Estratégico y Recomendaciones")
 
 st.markdown("""
 | Acto | Dimensión | Hallazgo Estratégico |
@@ -319,7 +330,7 @@ st.markdown("""
 | **Acto 2** | **Familia** | La ausencia de hijos dispara el **TotalSpend** a igual nivel de ingreso. |
 | **Acto 3** | **Canales** | El **Catálogo** y el segmento **PhD sin hijos** ofrecen el mejor ROI por respuesta. |
 
-### 📌 Recomendaciones:
+### Recomendaciones:
 1. **Priorización:** Concentrar esfuerzos de productos Premium en clientes con Master/PhD sin hijos.
 2. **Canal Táctico:** Revitalizar la inversión en catálogos físicos y digitales dirigidos al cluster de alto valor.
 3. **Incentivos:** Para el segmento con hijos, la única vía de entrada efectiva son las **Ofertas/Deals**; no intentar vender premium a precio full.
