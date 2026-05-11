@@ -139,7 +139,8 @@ else:
             coloraxis_showscale=False, 
             xaxis=dict(title="Gasto Promedio en Vinos ($)", title_font=dict(color="#000000"), tickfont=dict(color="#000000")),
             yaxis=dict(tickfont=dict(color="#000000")),
-            margin=dict(l=10, r=10, t=50, b=10)
+            margin=dict(l=10, r=10, t=50, b=10),
+            height=450
         )
         st.plotly_chart(fig1, use_container_width=True, theme=None)
         st.info("**Insight:** El nivel educativo es el predictor más fuerte del consumo premium.")
@@ -159,7 +160,8 @@ else:
             font=dict(color="#000000"), title_font=dict(color="#000000"),
             xaxis=dict(tickfont=dict(color="#000000")),
             yaxis=dict(title="Gasto Promedio ($)", title_font=dict(color="#000000"), tickfont=dict(color="#000000")),
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1, font=dict(color="#000000"))
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1, font=dict(color="#000000")),
+            height=450
         )
         st.plotly_chart(fig2, use_container_width=True, theme=None)
         st.info("**Insight:** Los segmentos sin pareja estable muestran un ticket promedio superior.")
@@ -186,7 +188,8 @@ else:
             template="plotly_white", plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
             font=dict(color="#000000"), title_font=dict(color="#000000"),
             xaxis=dict(tickvals=[0,1,2,3], title="Hijos", title_font=dict(color="#000000"), tickfont=dict(color="#000000")),
-            yaxis=dict(title="Gasto Promedio ($)", title_font=dict(color="#000000"), tickfont=dict(color="#000000"))
+            yaxis=dict(title="Gasto Promedio ($)", title_font=dict(color="#000000"), tickfont=dict(color="#000000")),
+            height=450
         )
         st.plotly_chart(fig3, use_container_width=True, theme=None)
         st.info("**Insight:** La caída es drástica al pasar de 0 a 1 hijo.")
@@ -208,7 +211,8 @@ else:
             font=dict(color="#000000"), title_font=dict(color="#000000"),
             xaxis=dict(title="Ingreso Anual", title_font=dict(color="#000000"), tickfont=dict(color="#000000"), tickformat="$"),
             yaxis=dict(title="Gasto Total", title_font=dict(color="#000000"), tickfont=dict(color="#000000")),
-            legend=dict(font=dict(color="#000000"))
+            legend=dict(font=dict(color="#000000")),
+            height=450
         )
         st.plotly_chart(fig4, use_container_width=True, theme=None)
         st.info("**Insight:** Sin hijos se sitúa por encima del resto en gasto total.")
@@ -237,7 +241,8 @@ else:
             font=dict(color="#000000"), title_font=dict(color="#000000"),
             xaxis=dict(tickfont=dict(color="#000000")),
             yaxis=dict(title="Compras Promedio", title_font=dict(color="#000000"), tickfont=dict(color="#000000")),
-            legend=dict(font=dict(color="#000000"))
+            legend=dict(font=dict(color="#000000")),
+            height=450
         )
         st.plotly_chart(fig5, use_container_width=True, theme=None)
         st.info("**Insight:** El canal Catálogo es 2.7x más efectivo para clientes sin hijos.")
@@ -263,7 +268,8 @@ else:
             font=dict(color="#000000"), title_font=dict(color="#000000"),
             xaxis=dict(title="Nivel educativo", title_font=dict(color="#000000"), tickfont=dict(color="#000000")),
             yaxis=dict(title="Tasa de Respuesta (%)", title_font=dict(color="#000000"), tickfont=dict(color="#000000")),
-            legend=dict(font=dict(color="#000000"))
+            legend=dict(font=dict(color="#000000")),
+            height=450
         )
         st.plotly_chart(fig6, use_container_width=True, theme=None)
         st.info("**Insight:** Los clientes con estudios superiores y sin hijos son los más receptivos.")
