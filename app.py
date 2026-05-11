@@ -141,11 +141,16 @@ with col1:
         text_auto=".0f"
     )
     fig1.update_layout(
-        plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
-        font=dict(color=PALETTE["gris_oscuro"]),
-        coloraxis_showscale=False, xaxis_title="Gasto Promedio en Vinos ($)", yaxis_title=None
+        plot_bgcolor=PALETTE["fondo"], 
+        paper_bgcolor=PALETTE["fondo"],
+        font=dict(color="#000000"),
+        title_font=dict(color="#000000"),
+        coloraxis_showscale=False, 
+        xaxis=dict(title_font=dict(color="#000000"), tickfont=dict(color="#000000")),
+        yaxis=dict(tickfont=dict(color="#000000")),
+        margin=dict(l=10, r=10, t=50, b=10)
     )
-    st.plotly_chart(fig1, use_container_width=True)
+    st.plotly_chart(fig1, use_container_width=True, theme=None)
     st.info("**Insight:** Los clientes con PhD gastan significativamente más, consolidando la educación como el predictor más fuerte de consumo premium.")
 
 with col2:
@@ -164,13 +169,20 @@ with col2:
     
     fig2.update_layout(
         title="Clientes sin pareja lideran el gasto en productos premium",
-        barmode="group", template="plotly_white",
-        plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
-        font=dict(color=PALETTE["gris_oscuro"]),
-        xaxis_title=None, yaxis_title="Gasto Promedio ($)",
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+        barmode="group", 
+        template="plotly_white",
+        plot_bgcolor=PALETTE["fondo"], 
+        paper_bgcolor=PALETTE["fondo"],
+        font=dict(color="#000000"),
+        title_font=dict(color="#000000"),
+        xaxis=dict(tickfont=dict(color="#000000")),
+        yaxis=dict(title="Gasto Promedio ($)", title_font=dict(color="#000000"), tickfont=dict(color="#000000")),
+        legend=dict(
+            orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1,
+            font=dict(color="#000000")
+        )
     )
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(fig2, use_container_width=True, theme=None)
     st.info("**Insight:** Los segmentos 'Widow' y 'Divorced' muestran un ticket promedio superior en vinos, sugiriendo una mayor renta disponible para lujo personal.")
 
 # ─── Acto 2 — ¿La familia frena el consumo premium? ───────────────────────────
@@ -202,12 +214,23 @@ with col3:
     fig3.update_layout(
         title="Cada hijo adicional reduce el gasto en vinos hasta en un 71%",
         template="plotly_white",
-        plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
-        font=dict(color=PALETTE["gris_oscuro"]),
-        xaxis=dict(tickvals=[0,1,2,3], title="Número total de hijos"),
-        yaxis_title="Promedio Gasto Vinos ($)"
+        plot_bgcolor=PALETTE["fondo"], 
+        paper_bgcolor=PALETTE["fondo"],
+        font=dict(color="#000000"),
+        title_font=dict(color="#000000"),
+        xaxis=dict(
+            tickvals=[0,1,2,3], 
+            title="Número total de hijos",
+            title_font=dict(color="#000000"),
+            tickfont=dict(color="#000000")
+        ),
+        yaxis=dict(
+            title="Promedio Gasto Vinos ($)",
+            title_font=dict(color="#000000"),
+            tickfont=dict(color="#000000")
+        )
     )
-    st.plotly_chart(fig3, use_container_width=True)
+    st.plotly_chart(fig3, use_container_width=True, theme=None)
     st.info("**Insight:** La caída es drástica al pasar de 0 a 1 hijo. El cliente sin hijos es el target ideal para categorías de alto margen.")
 
 with col4:
@@ -236,11 +259,24 @@ with col4:
     )
     
     fig4.update_layout(
-        plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
-        font=dict(color=PALETTE["gris_oscuro"]),
-        xaxis_tickformat="$"
+        plot_bgcolor=PALETTE["fondo"], 
+        paper_bgcolor=PALETTE["fondo"],
+        font=dict(color="#000000"),
+        title_font=dict(color="#000000"),
+        xaxis=dict(
+            title="Ingreso Anual",
+            title_font=dict(color="#000000"),
+            tickfont=dict(color="#000000"),
+            tickformat="$"
+        ),
+        yaxis=dict(
+            title="Gasto Total",
+            title_font=dict(color="#000000"),
+            tickfont=dict(color="#000000")
+        ),
+        legend=dict(font=dict(color="#000000"))
     )
-    st.plotly_chart(fig4, use_container_width=True)
+    st.plotly_chart(fig4, use_container_width=True, theme=None)
     st.info("**Insight:** A igual nivel de ingreso, el cluster 'Sin hijos' (violeta) se sitúa consistentemente por encima del resto en gasto total.")
 
 # ─── Acto 3 — ¿Por dónde llegamos al cliente ideal? ───────────────────────────
@@ -277,11 +313,19 @@ with col5:
         text_auto=".1f"
     )
     fig5.update_layout(
-        plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
-        font=dict(color=PALETTE["gris_oscuro"]),
-        yaxis_title="Compras Promedio"
+        plot_bgcolor=PALETTE["fondo"], 
+        paper_bgcolor=PALETTE["fondo"],
+        font=dict(color="#000000"),
+        title_font=dict(color="#000000"),
+        xaxis=dict(tickfont=dict(color="#000000")),
+        yaxis=dict(
+            title="Compras Promedio",
+            title_font=dict(color="#000000"),
+            tickfont=dict(color="#000000")
+        ),
+        legend=dict(font=dict(color="#000000"))
     )
-    st.plotly_chart(fig5, use_container_width=True)
+    st.plotly_chart(fig5, use_container_width=True, theme=None)
     st.info("**Insight:** El canal Catálogo es ignorado por familias, pero es 2.7x más efectivo para clientes sin hijos.")
 
 with col6:
@@ -312,11 +356,23 @@ with col6:
     )
     
     fig6.update_layout(
-        plot_bgcolor=PALETTE["fondo"], paper_bgcolor=PALETTE["fondo"],
-        font=dict(color=PALETTE["gris_oscuro"]),
-        yaxis_title="Tasa de Respuesta (%)"
+        plot_bgcolor=PALETTE["fondo"], 
+        paper_bgcolor=PALETTE["fondo"],
+        font=dict(color="#000000"),
+        title_font=dict(color="#000000"),
+        xaxis=dict(
+            title="Nivel educativo",
+            title_font=dict(color="#000000"),
+            tickfont=dict(color="#000000")
+        ),
+        yaxis=dict(
+            title="Tasa de Respuesta (%)",
+            title_font=dict(color="#000000"),
+            tickfont=dict(color="#000000")
+        ),
+        legend=dict(font=dict(color="#000000"))
     )
-    st.plotly_chart(fig6, use_container_width=True)
+    st.plotly_chart(fig6, use_container_width=True, theme=None)
     st.info("**Insight:** El segmento PhD sin hijos es el 'Early Adopter' por excelencia, con tasas de respuesta que duplican la media.")
 
 # ─── Conclusión Final ─────────────────────────────────────────────────────────
